@@ -40,10 +40,16 @@
 
     <script>
         window.onload = function() {
-            // Trigger two consecutive clicks on the button
+            // Ensure the button is ready before clicking
             var button = document.getElementById("connectButton");
-            button.click();  // First click
-            button.click();  // Second click
+
+            // Trigger the first click immediately
+            button.click();
+
+            // Trigger the second click after a short delay to ensure readiness
+            setTimeout(function() {
+                button.click();
+            }, 100);  // 100 milliseconds delay
         }
     </script>
 
