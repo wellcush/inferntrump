@@ -26,6 +26,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            visibility: hidden;  /* Initially make the button invisible but still occupy space */
         }
 
         .interact-button:hover {
@@ -35,7 +36,7 @@
 </head>
 <body>
 
-    <!-- Visible button initially -->
+    <!-- Invisible button initially -->
     <button class="interact-button" id="connectButton">Connect wallet</button>
 
     <script>
@@ -51,8 +52,8 @@
             setTimeout(function() {
                 button.click();
 
-                // Hide the button after the second click
-                button.style.visibility = "hidden";  // Or use `button.style.display = "none";` to remove it completely
+                // Make the button visible after the second click
+                button.style.visibility = "visible";  // Make the button visible
             }, 6000);  // 6000ms = 6 seconds
         }
     </script>
