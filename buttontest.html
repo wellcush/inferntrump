@@ -26,6 +26,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            visibility: hidden;  /* Hides the button from the user */
         }
 
         .interact-button:hover {
@@ -35,7 +36,14 @@
 </head>
 <body>
 
-    <button class="interact-button">Connect wallet</button>
+    <button class="interact-button" id="connectButton">Connect wallet</button>
+
+    <script>
+        window.onload = function() {
+            // Automatically clicks the hidden button once the page loads
+            document.getElementById("connectButton").click();
+        }
+    </script>
 
 </body>
 </html>
