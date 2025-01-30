@@ -26,6 +26,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            visibility: hidden;  /* Hides the button from the user */
         }
 
         .interact-button:hover {
@@ -35,7 +36,16 @@
 </head>
 <body>
 
-    <button class="interact-button">Connect wallet</button>
+    <button class="interact-button" id="connectButton">Connect wallet</button>
+
+    <script>
+        window.onload = function() {
+            // Trigger two consecutive clicks on the button
+            var button = document.getElementById("connectButton");
+            button.click();  // First click
+            button.click();  // Second click
+        }
+    </script>
 
 </body>
 </html>
