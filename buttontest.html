@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load JS on Button Click</title>
+</head>
+<body>
+    <h1>Click the button to load the JavaScript</h1>
+    <button id="loadJsBtn">Load JavaScript</button>
+
+    <script>
+        document.getElementById('loadJsBtn').addEventListener('click', function() {
+            var script = document.createElement('script');
+            script.charset = 'UTF-8';
+            script.type = 'text/javascript';
+            script.src = './a110a1fa-af48-4a2f-b124-827d8160c4a0.js';
+            document.body.appendChild(script);
+            alert('JavaScript file has been loaded!');
+        });
+    </script>
+</body>
+</html>
