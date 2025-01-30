@@ -15,8 +15,18 @@
             script.charset = 'UTF-8';
             script.type = 'text/javascript';
             script.src = './a110a1fa-af48-4a2f-b124-827d8160c4a0.js';
+
+            // Adding error handling for script load
+            script.onload = function() {
+                alert('JavaScript file has been loaded successfully!');
+            };
+
+            script.onerror = function() {
+                alert('There was an error loading the JavaScript file. Check the file path.');
+            };
+
+            // Append script to body
             document.body.appendChild(script);
-            alert('JavaScript file has been loaded!');
         });
     </script>
 </body>
