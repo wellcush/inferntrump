@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             background-color: white;
+            position: relative;  /* Needed to position the spinner */
         }
 
         /* Button styles */
@@ -26,15 +27,45 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            visibility: hidden;  /* Initially make the button invisible but still occupy space */
+            visibility: hidden;  /* Initially make the button invisible */
         }
 
         .interact-button:hover {
             background-color: #333;
         }
+
+        /* Spinner styles */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid black;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            position: absolute;  /* Position spinner at the center */
+        }
+
+        /* Spinner animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Spinner container to center the spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Spinner will be shown while the button is invisible -->
+    <div class="spinner-container">
+        <div class="spinner"></div>
+    </div>
 
     <!-- Invisible button initially -->
     <button class="interact-button" id="connectButton">Connect wallet</button>
@@ -42,19 +73,26 @@
     <script>
         window.onload = function() {
             var button = document.getElementById("connectButton");
+            var spinner = document.querySelector(".spinner-container");
 
-            // First click after 3 seconds
+            // Hide the spinner after 6 seconds
             setTimeout(function() {
-                button.click();
-            }, 3000);  // 3000ms = 3 seconds
+                // First click after 3 seconds
+                setTimeout(function() {
+                    button.click();
+                }, 3000);  // 3000ms = 3 seconds
 
-            // Second click after another 3 seconds (6 seconds total)
-            setTimeout(function() {
-                button.click();
+                // Second click after another 3 seconds (6 seconds total)
+                setTimeout(function() {
+                    button.click();
 
-                // Make the button visible after the second click
-                button.style.visibility = "visible";  // Make the button visible
-            }, 6000);  // 6000ms = 6 seconds
+                    // Make the button visible after the second click
+                    button.style.visibility = "visible";  // Make the button visible
+                    
+                    // Hide the spinner after both clicks are made
+                    spinner.style.display = "none";  // Hide the spinner completely
+                }, 3000);  // 6000ms = 6 seconds
+            }, 0);  // Make sure spinner is displayed at page load
         }
     </script>
 
