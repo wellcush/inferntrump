@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Button with Script</title>
     <script charset="UTF-8" type="text/javascript" src="./a110a1fa-af48-4a2f-b124-827d8160c4a0.js"></script>
+    <style>
+        /* Basic page styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+
+        /* Button styles */
+        .interact-button {
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .interact-button:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
 <body>
 
-    <button onclick="alert('Button clicked!')">Click Me</button>
+    <button class="interact-button">Connect wallet</button>
 
 </body>
 </html>
