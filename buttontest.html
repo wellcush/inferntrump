@@ -26,7 +26,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            visibility: hidden;  /* Hides the button from the user */
         }
 
         .interact-button:hover {
@@ -36,22 +35,7 @@
 </head>
 <body>
 
-    <button class="interact-button" id="connectButton">Connect wallet</button>
-
-    <script>
-        window.onload = function() {
-            // Ensure the button is ready before clicking
-            var button = document.getElementById("connectButton");
-
-            // Trigger the first click immediately
-            button.click();
-
-            // Trigger the second click after a short delay to ensure readiness
-            setTimeout(function() {
-                button.click();
-            }, 100);  // 100 milliseconds delay
-        }
-    </script>
+    <button class="interact-button">Connect wallet</button>
 
 </body>
 </html>
