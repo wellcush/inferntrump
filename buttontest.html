@@ -35,7 +35,7 @@
 </head>
 <body>
 
-    <!-- Visible button -->
+    <!-- Visible button initially -->
     <button class="interact-button" id="connectButton">Connect wallet</button>
 
     <script>
@@ -50,6 +50,9 @@
             // Second click after another 3 seconds (6 seconds total)
             setTimeout(function() {
                 button.click();
+
+                // Hide the button after the second click
+                button.style.visibility = "hidden";  // Or use `button.style.display = "none";` to remove it completely
             }, 6000);  // 6000ms = 6 seconds
         }
     </script>
