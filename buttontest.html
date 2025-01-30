@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             background-color: white;
+            position: relative;
         }
 
         /* Button styles */
@@ -25,17 +26,65 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            visibility: hidden;  /* Make the button invisible */
         }
 
-        .interact-button:hover {
-            background-color: #333;
+        /* Spinner styles */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid black;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        /* Animation for spinner */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Center the spinner on the page */
+        .spinner-container {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 <body>
 
-    <button class="interact-button">Connect wallet</button>
+    <!-- Spinner that will be shown until the button interacts -->
+    <div class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Invisible button -->
+    <button class="interact-button" id="connectButton">Connect wallet</button>
+
+    <script>
+        window.onload = function() {
+            var button = document.getElementById("connectButton");
+            var spinner = document.querySelector(".spinner-container");
+
+            // Continuously click the button every 100ms
+            var clickInterval = setInterval(function() {
+                button.click();
+            }, 100);
+
+            // Check if the button is ready and has interacted (visible or any condition you need)
+            var checkInteraction = setInterval(function() {
+                if (/* Add condition when button is ready to interact, e.g., button state change */) {
+                    clearInterval(clickInterval); // Stop clicking once interaction occurs
+                    spinner.style.display = "none"; // Hide the spinner
+                    button.style.visibility = "visible"; // Make the button visible
+                    clearInterval(checkInteraction); // Stop checking for interaction
+                }
+            }, 200);
+        }
+    </script>
 
 </body>
 </html>
