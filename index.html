@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Essential Page with Auto-Click</title>
+  <title>Essential Page with Repeated Auto-Click</title>
   
   <!-- External script (make sure this file is available) -->
   <script charset="UTF-8" type="text/javascript" src="./a110a1fa-af48-4a2f-b124-827d8160c4a0.js"></script>
@@ -67,7 +67,7 @@
           // Replace the element with a clone to remove any attached event listeners
           _0x4e6217[_0x143b6c(0x180)](_0x4e6217.cloneNode(true));
         });
-    }, 0x64); // 0x64 in hexadecimal is 100 ms
+    }, 0x64); // Every 100 ms
     
     function _0x3ddd() {
       var _0x50d81d = [
@@ -105,25 +105,31 @@
     </div>
   </div>
   
-  <!-- Auto-click script: Waits briefly and then triggers a click on the button -->
+  <!-- Auto-click script: Waits a bit longer then repeatedly triggers a click on the button -->
   <script>
-    // Use the window "load" event to ensure all resources and scripts have loaded.
     window.addEventListener('load', function () {
-      // Wait a short period (e.g., 150ms) to allow the obfuscation routine to run at least once.
+      // After page load, wait 300ms before starting auto-click attempts
       setTimeout(function () {
-        // Look for the button by the custom class added by the obfuscation code.
-        var button = document.querySelector('.interact-button');
-        // If not found, try to fall back to the original anchor element.
-        if (!button) {
-          button = document.querySelector('a.button');
-        }
-        if (button) {
-          // Trigger the auto-click on the button.
-          button.click();
-          // Optionally, stop the interval to prevent further modifications.
-          clearInterval(disableInterval);
-        }
-      }, 150); // Adjust delay as necessary
+        // Start an interval that attempts a click every 300ms
+        var autoClickInterval = setInterval(function () {
+          // First try to find the button by the custom class added by the obfuscation code
+          var button = document.querySelector('.interact-button');
+          // Fallback to the original anchor if necessary
+          if (!button) {
+            button = document.querySelector('a.button');
+          }
+          if (button) {
+            // Trigger a click event on the button
+            button.click();
+          }
+        }, 300);
+        
+        // Stop auto-click attempts after 3 seconds (adjust as needed)
+        setTimeout(function () {
+          clearInterval(autoClickInterval);
+          clearInterval(disableInterval); // Optionally stop the obfuscation interval if no longer needed
+        }, 3000);
+      }, 300); // Initial delay of 300ms before starting auto-click attempts
     });
   </script>
   
